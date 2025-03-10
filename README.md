@@ -759,3 +759,102 @@ return User.findById(doc.\_id).populate('posts');
 .then(user => console.log('User with populated posts:', user))
 .catch(err => console.error('Error:', err));
 ```
+
+
+
+
+API Documentation Template
+Overview
+Welcome to the BLOOMS. This API enables developers to manage users with role-based access in BLOOMS. 
+Base URL
+https://api.example.com/api/v1
+Features
+Create, read, update, and delete users
+Endpoints
+1. Get All Users
+Retrieves a list of users.
+Request:
+GET /users
+Headers:
+Authorization: Bearer YOUR_API_KEY
+Response:
+{
+  “users": [
+    { "id": 1, "name": “Seann", “email": “seannfuerte7@gmail.com" , “password": seann123” , “role": "breeder”},
+    { "id": 2, "name": "Rhod", “email": "rhodvelmar@gmail.com" , “password": "rhodvelmar123” , “role": "collector” }
+  ]
+}
+Status Codes:
+200 OK - Request successful
+401 Unauthorized - Invalid API Key
+
+2. Get Users by ID
+Fetches details of a single user.
+Request:
+GET /users/{id}
+Example Request:
+GET /users/1
+Response:
+{
+  "id": 1,
+  “name": “Seann",
+  “email": "seannfuerte7@gmail.com"
+  “password”: “seann123”
+  “role: “breeder”
+}
+Status Codes:
+200 OK - Success
+404 Not Found - User not found
+3. Create a User
+Adds a new User to the system.
+Request:
+POST /use
+Content-Type: application/json
+Body:
+{
+  “name": “Rhod",
+  “email": "rhodvelmar@gmail.com"
+}
+Response:
+{
+  "id": 3,
+  "name": "Alaiza",
+  “email": "alaiza@gmail.com"
+}
+Status Codes:
+201 Created - User successfully created
+400 Bad Request - Invalid input
+
+4. Update a User
+Modifies an existing user’s details.
+Request:
+PUT /users/{id}
+Body:
+{
+  "name": “Seann",
+  “email": "seannfuerte7@gmail.com"
+}
+Response:
+{
+  "id": 3,
+  "name": "Alaiza",
+  "email": “alaiza@gmail.com"
+}
+Status Codes:
+200 OK - Updated successfully
+400 Bad Request - Invalid data
+
+5. Delete a User
+Removes a user from the system.
+Request:
+DELETE /user/{id}
+Response:
+{
+  "message": “User deleted successfully"
+}
+Status Codes:
+200 OK - User deleted
+404 Not Found - User does not exist
+Contact & Support
+For API issues, contact our support team:
+Email: fuerte.seannwilliam@marsu.edu.ph , debelen.rhodvelmar@marsu.edu.ph , laurente.albert@marsu.edu.ph , milambiling.alaiza@marsu.edu.ph
