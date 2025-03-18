@@ -765,96 +765,75 @@ return User.findById(doc.\_id).populate('posts');
 
 API Documentation Template
 Overview
-Welcome to the BLOOMS. This API enables developers to manage users with role-based access in BLOOMS. 
+The BLOOMS: Butterfly Livelihood Online Operations Management System API enables users to manage the buying, selling, and tracking of butterfly and pupa species. It supports role-based access, allowing different user roles such as Buyer, Exporter, Collector, Agent, Breeder, Butterfly Release Business, and Butterfly Framing & Preservation to perform specific actions.
 Base URL
-https://api.example.com/api/v1
-Features
-Create, read, update, and delete users
-Endpoints
+http://localhost:8080/api/v1
+Authentication
+This API does not yet implement authentication, but future updates may include API keys or JWT tokens for secure access.
+User Management
 1. Get All Users
-Retrieves a list of users.
-Request:
-GET /users
-Headers:
-Authorization: Bearer YOUR_API_KEY
-Response:
-{
-  “users": [
-    { "id": 1, "name": “Seann", “email": “seannfuerte7@gmail.com" , “password": seann123” , “role": "breeder”},
-    { "id": 2, "name": "Rhod", “email": "rhodvelmar@gmail.com" , “password": "rhodvelmar123” , “role": "collector” }
-  ]
-}
-Status Codes:
-200 OK - Request successful
-401 Unauthorized - Invalid API Key
+Request: GET /users
+Response (200 OK):
 
-2. Get Users by ID
-Fetches details of a single user.
-Request:
-GET /users/{id}
-Example Request:
-GET /users/1
-Response:
-{
-  "id": 1,
-  “name": “Seann",
-  “email": "seannfuerte7@gmail.com"
-  “password”: “seann123”
-  “role: “breeder”
-}
-Status Codes:
-200 OK - Success
-404 Not Found - User not found
-3. Create a User
-Adds a new User to the system.
-Request:
-POST /use
-Content-Type: application/json
-Body:
-{
-  “name": “Rhod",
-  “email": "rhodvelmar@gmail.com"
-}
-Response:
-{
-  "id": 3,
-  "name": "Alaiza",
-  “email": "alaiza@gmail.com"
-}
-Status Codes:
-201 Created - User successfully created
-400 Bad Request - Invalid input
+[
+  {
+    "user_id": "u001",
+    "name": "Rhod Velmar",
+    "email": "rhodvelmar@gmail.com",
+    "role": "Buyer"
+  },
+  {
+    "user_id": "u002",
+    "name": "Seann",
+    "email": "seannfuerte@gmail.com",
+    "role": "Exporter"
+  }
+  {
+    "user_id": "u003",
+    "name": "Alaiza Milamnbiling",
+    "email": "alaizamilambiling@gmail.com",
+    "role": "Collector"
+  },
+  {
+    "user_id": "u004",
+    "name": "Alber Laurente",
+    "email": "albertlaurente@gmail.com",
+    "role": "Agent"
+  }
+]
 
-4. Update a User
-Modifies an existing user’s details.
-Request:
-PUT /users/{id}
-Body:
+Order Management
+1. Get All Orders
+Request: GET /orders
+Response (200 OK):
+[
+  {
+    "order_id": "12345",
+    "user_id": "u001",
+    "category": "Butterfly",
+    "species_name": "Mariposa",
+    "quantity": 10,
+    "price": 5.00,
+    "total_price": 50.00,
+    "status": "Pending"
+  }
+]
+Error Handling
+All API error responses follow this format:
 {
-  "name": “Seann",
-  “email": "seannfuerte7@gmail.com"
+  "error": "Error message",
+  "code": 400
 }
-Response:
-{
-  "id": 3,
-  "name": "Alaiza",
-  "email": “alaiza@gmail.com"
-}
-Status Codes:
-200 OK - Updated successfully
-400 Bad Request - Invalid data
-
-5. Delete a User
-Removes a user from the system.
-Request:
-DELETE /user/{id}
-Response:
-{
-  "message": “User deleted successfully"
-}
-Status Codes:
-200 OK - User deleted
-404 Not Found - User does not exist
+Common Status Codes:
+Status Code	Meaning	Description
+400	Bad Request	Invalid input data
+401	Unauthorized	Invalid API key (future implementation)
+403	Forbidden	No access rights
+404	Not Found	Resource not found
+500	Server Error	Internal API failure
+Versioning & Future Updates
+Version | Changes
+v1.0.0 | Initial API release with User & Order Management
 Contact & Support
 For API issues, contact our support team:
 Email: fuerte.seannwilliam@marsu.edu.ph , debelen.rhodvelmar@marsu.edu.ph , laurente.albert@marsu.edu.ph , milambiling.alaiza@marsu.edu.ph
